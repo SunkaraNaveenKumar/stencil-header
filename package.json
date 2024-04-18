@@ -1,6 +1,6 @@
 {
-  "name": "stencil-comp",
-  "version": "0.0.1",
+  "name": "stencil-header-main",
+  "version": "1.1.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -29,17 +29,11 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
+  "license": "MIT",
   "devDependencies": {
-    "@stencil/core": "^4.7.0",
-    "@types/jest": "^29.5.6",
-    "@types/node": "^16.18.11",
-    "jest": "^29.7.0",
-    "jest-cli": "^29.7.0",
-    "puppeteer": "^21.9.0"
-  },
-  "license": "MIT"
+    "@stencil-community/router": "^1.0.2",
+    "@stencil/core": "^2.13.0"
+  }
 }

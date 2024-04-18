@@ -5,14 +5,24 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Dependencies
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+### Depends on
 
+- stencil-route-link
+- stencil-router
+- stencil-route-switch
+- stencil-route
+
+### Graph
+```mermaid
+graph TD;
+  my-component --> stencil-route-link
+  my-component --> stencil-router
+  my-component --> stencil-route-switch
+  my-component --> stencil-route
+  style my-component fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
