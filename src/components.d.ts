@@ -7,18 +7,29 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ChildComponent {
-        "name": string;
+        "count": number;
     }
     interface ChildHome {
     }
+    interface InnerChild {
+        "count": number;
+    }
     interface MyComponent {
-        /**
-          * //  * The first name //
-         */
+        "data": string;
         "first": string;
         "last": string;
         "middle": string;
+        "myInnerArray": Array<string>;
+        "useauth": string;
     }
+}
+export interface InnerChildCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInnerChildElement;
+}
+export interface MyComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyComponentElement;
 }
 declare global {
     interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {
@@ -33,7 +44,35 @@ declare global {
         prototype: HTMLChildHomeElement;
         new (): HTMLChildHomeElement;
     };
+    interface HTMLInnerChildElementEventMap {
+        "IncreaseCount": void;
+    }
+    interface HTMLInnerChildElement extends Components.InnerChild, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInnerChildElementEventMap>(type: K, listener: (this: HTMLInnerChildElement, ev: InnerChildCustomEvent<HTMLInnerChildElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInnerChildElementEventMap>(type: K, listener: (this: HTMLInnerChildElement, ev: InnerChildCustomEvent<HTMLInnerChildElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInnerChildElement: {
+        prototype: HTMLInnerChildElement;
+        new (): HTMLInnerChildElement;
+    };
+    interface HTMLMyComponentElementEventMap {
+        "handleEvent": string;
+    }
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMyComponentElementEventMap>(type: K, listener: (this: HTMLMyComponentElement, ev: MyComponentCustomEvent<HTMLMyComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMyComponentElementEventMap>(type: K, listener: (this: HTMLMyComponentElement, ev: MyComponentCustomEvent<HTMLMyComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
@@ -42,26 +81,33 @@ declare global {
     interface HTMLElementTagNameMap {
         "child-component": HTMLChildComponentElement;
         "child-home": HTMLChildHomeElement;
+        "inner-child": HTMLInnerChildElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
     interface ChildComponent {
-        "name"?: string;
+        "count"?: number;
     }
     interface ChildHome {
     }
+    interface InnerChild {
+        "count"?: number;
+        "onIncreaseCount"?: (event: InnerChildCustomEvent<void>) => void;
+    }
     interface MyComponent {
-        /**
-          * //  * The first name //
-         */
+        "data"?: string;
         "first"?: string;
         "last"?: string;
         "middle"?: string;
+        "myInnerArray"?: Array<string>;
+        "onHandleEvent"?: (event: MyComponentCustomEvent<string>) => void;
+        "useauth"?: string;
     }
     interface IntrinsicElements {
         "child-component": ChildComponent;
         "child-home": ChildHome;
+        "inner-child": InnerChild;
         "my-component": MyComponent;
     }
 }
@@ -71,6 +117,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "child-component": LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
             "child-home": LocalJSX.ChildHome & JSXBase.HTMLAttributes<HTMLChildHomeElement>;
+            "inner-child": LocalJSX.InnerChild & JSXBase.HTMLAttributes<HTMLInnerChildElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

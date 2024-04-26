@@ -5,24 +5,22 @@
 <!-- Auto Generated Below -->
 
 
-## Dependencies
+## Properties
 
-### Depends on
+| Property  | Attribute | Description | Type     | Default     |
+| --------- | --------- | ----------- | -------- | ----------- |
+| `first`   | `first`   |             | `string` | `undefined` |
+| `last`    | `last`    |             | `string` | `undefined` |
+| `middle`  | `middle`  |             | `string` | `undefined` |
+| `useauth` | `useauth` |             | `string` | `undefined` |
 
-- stencil-route-link
-- stencil-router
-- stencil-route-switch
-- stencil-route
 
-### Graph
-```mermaid
-graph TD;
-  my-component --> stencil-route-link
-  my-component --> stencil-router
-  my-component --> stencil-route-switch
-  my-component --> stencil-route
-  style my-component fill:#f9f,stroke:#333,stroke-width:4px
-```
+## Events
+
+| Event         | Description | Type                  |
+| ------------- | ----------- | --------------------- |
+| `handleEvent` |             | `CustomEvent<string>` |
+
 
 ----------------------------------------------
 

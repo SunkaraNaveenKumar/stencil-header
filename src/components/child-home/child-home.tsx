@@ -5,11 +5,12 @@ import { Component, h } from '@stencil/core';
   shadow: true,
 })
 export class MyComponent {
-
-
   render() {
     return (
-      <p>Child Home</p>
+      <div>
+        <p>Child Comp</p>
+        <inner-child></inner-child>
+      </div>
     );
   }
 }

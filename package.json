@@ -1,6 +1,6 @@
 {
   "name": "stencil-header-main",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -33,7 +33,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil-community/router": "^1.0.2",
-    "@stencil/core": "^2.13.0"
+    "@stencil/core": "^4.17.1"
   }
 }

@@ -1,4 +1,4 @@
-# child-component
+# inner-child
 
 
 
@@ -12,17 +12,26 @@
 | `count`  | `count`   |             | `number` | `undefined` |
 
 
+## Events
+
+| Event           | Description | Type                |
+| --------------- | ----------- | ------------------- |
+| `IncreaseCount` |             | `CustomEvent<void>` |
+
+
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [inner-child](../inner-child)
+ - [child-component](../child-component)
+ - [child-home](../child-home)
 
 ### Graph
 ```mermaid
 graph TD;
   child-component --> inner-child
-  style child-component fill:#f9f,stroke:#333,stroke-width:4px
+  child-home --> inner-child
+  style inner-child fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
